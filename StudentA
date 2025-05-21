@@ -24,3 +24,13 @@ class MurderStatsManager:
             print(f"{key} deleted")
         else:
             print(f"{key} not found")
+
+data = MurderStatsManager()
+data.add_data("Europe", "Estonia", "Tallinn", 5)
+data.add_data("Europe", "Finland", "Helsinki", 3)
+data.add_data("Asia", "Japan", "Tokyo", 8)
+data.add_data("Africa", "Nigeria", "Lagos", 10)
+data.add_data("Africa", "Egypt", "Cairo", 7)
+data.get_city_stats("Asia", "Japan", "Tokyo")
+data.remove_city("Europe", "Estonia", "Tallinn")
+data.get_stats()
