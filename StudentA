@@ -3,16 +3,34 @@ class MurderStatsManager:
         self.data = {}
 
     def add_data(self, continent, country, city, count):
-        key = f"{continent}: {country} - {city}"
+        key = f"{continent} - {country} - {city}"
         self.data[key] = count
 
     def get_stats(self):
         for location, count in self.data.items():
-            print(f"{location}: {count} murders")
+            print(f"{location}: {count} murdery")
+
+    def get_city_stats(self, continent, country, city):
+        key = f"{continent} - {country} - {city}"
+        if key in self.data:
+            print(f"{key}: {self.data[key]} murdery")
+        else:
+            print(f"{key}: no data")
+
+    def remove_city(self, continent, country, city):
+        key = f"{continent} - {country} - {city}"
+        if key in self.data:
+            del self.data[key]
+            print(f"{key} deleted")
+        else:
+            print(f"{key} not found")
 
 data = MurderStatsManager()
 data.add_data("Europe", "Estonia", "Tallinn", 5)
 data.add_data("Europe", "Finland", "Helsinki", 3)
 data.add_data("Asia", "Japan", "Tokyo", 8)
-
+data.add_data("Africa", "Nigeria", "Lagos", 10)
+data.add_data("Africa", "Egypt", "Cairo", 7)
+data.get_city_stats("Asia", "Japan", "Tokyo")
+data.remove_city("Europe", "Estonia", "Tallinn")
 data.get_stats()
